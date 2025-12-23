@@ -10,7 +10,52 @@ body {
     line-height: 1.6;
     color: #333;
     background: #f5f7fa;
-    overflow-x: hidden; 
+    overflow-x: hidden;
+}
+
+/* Animation Classes */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.slide-in-left.appear {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.slide-in-right.appear {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scale-in {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scale-in.appear {
+    opacity: 1;
+    transform: scale(1);
 }
 
 /* Container */
@@ -170,6 +215,28 @@ body {
     background: #f5f7fa;
     display: flex;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Parallax effect for hero background */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #3498db, #139fe1);
+    background-size: 400% 400%;
+    z-index: -1;
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .hero-card {
@@ -228,7 +295,45 @@ body {
 
 .btn-primary:hover {
     background: #ffcc00;
-    transform: translateY(-3px);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    animation: pulse 0.5s ease infinite;
+}
+
+/* Pulse animation for buttons */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Glow effect on hover */
+.btn-primary {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
 }
 
 /* ================= RESPONSIVE ================= */
@@ -416,8 +521,9 @@ h2 {
 }
 
 .mission-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
 }
 
 .founder-image {
@@ -451,8 +557,9 @@ h2 {
 }
 
 .vision-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
 }
 
 .vision-card h4 {
@@ -596,8 +703,9 @@ h2 {
 }
 
 .number-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
 }
 
 .number-card h3 {
@@ -688,8 +796,9 @@ h2 {
 }
 
 .about .mission-card:hover, .about .vision-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
 }
 
 .about .mission-card h4 {
@@ -859,8 +968,9 @@ h2 {
 }
 
 .program-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    transition: all 0.4s ease;
 }
 
 .program-header {
@@ -954,6 +1064,9 @@ h2 {
 .btn-subcategory:hover {
     background: #3498db;
     color: #ffffff;
+    transform: scale(1.03);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+    transition: all 0.3s ease;
 }
 
 .btn-subcategory svg {
@@ -1161,6 +1274,9 @@ h2 {
 .btn-secondary:hover {
     background: #2c80b4;
     border-color: #2c80b4;
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
 }
 
 
@@ -1281,6 +1397,52 @@ h2 {
 #achievements {
     background: #f8f9fa;
     padding: 60px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+#achievements::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -1;
+    animation: float 20s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50px); }
+}
+
+/* Journey Section with subtle animation */
+#journey {
+    padding: 60px 0;
+    margin: 40px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+#journey::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(19, 159, 225, 0.1), rgba(255, 211, 26, 0.1));
+    z-index: -1;
+    animation: gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 #achievements h2 {
@@ -1358,7 +1520,9 @@ h2 {
 .stat-card:hover,
 .scholarship-card:hover,
 .partnership-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
 }
 
 .stat-card h3,
@@ -1437,7 +1601,9 @@ h2 {
 }
 
 .news-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
 }
 
 .news-item.featured {
@@ -1686,6 +1852,9 @@ input[type="submit"] {
 .send-btn:hover {
     background-color: #3498db;
     color: #ffffff;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+    transition: all 0.3s ease;
 }
 
 /* Active */
@@ -2811,6 +2980,43 @@ svg {
         max-width: 150px;
         height: 150px;
     }
+
+    /* Optimize animations for mobile */
+    .fade-in,
+    .slide-in-left,
+    .slide-in-right,
+    .scale-in {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    /* Reduce animation intensity on mobile */
+    .number-card:hover,
+    .program-card:hover,
+    .mission-card:hover,
+    .vision-card:hover {
+        transform: none;
+        transition: none;
+    }
+
+    /* Adjust hero section for mobile */
+    .hero {
+        padding: 120px 15px 15px;
+    }
+
+    .hero::before {
+        animation: none;
+    }
+
+    /* Adjust programs grid for mobile */
+    .program-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Adjust journey section for mobile */
+    #journey::before {
+        animation: none;
+    }
 }
 
 @media (max-width: 480px) {
@@ -2870,7 +3076,99 @@ svg {
     .contact-details {
         font-size: 0.8rem;
     }
+
+    /* Further mobile optimizations */
+    .btn {
+        padding: 12px 16px;
+        font-size: 15px;
+        margin: 3px 0;
+    }
+
+    .program-card {
+        margin-bottom: 15px;
+    }
+
+    .program-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .btn-subcategory {
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    /* Adjust animation delays for better mobile performance */
+    .fade-in,
+    .slide-in-left,
+    .slide-in-right,
+    .scale-in {
+        transition: none;
+    }
 }
+
+/* Optimize for touch devices */
+@media (hover: none) and (pointer: coarse) {
+    /* Disable hover effects on touch devices */
+    .number-card:hover,
+    .program-card:hover,
+    .mission-card:hover,
+    .vision-card:hover,
+    .news-item:hover,
+    .btn:hover {
+        transform: none;
+        box-shadow: initial;
+    }
+
+    /* Reduce motion for users who prefer reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+
+        html {
+            scroll-behavior: auto;
+        }
+    }
+}
+
+/* Parallax effect for hero section */
+.parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Additional hover animations */
+.contact-person:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.campus:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.subcategory-list ul li:hover {
+    color: #3498db;
+    transform: translateX(5px);
+    transition: all 0.3s ease;
+}
+
 /***************************************************************************************************/
 
 

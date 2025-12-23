@@ -9,6 +9,12 @@ This is a modern, responsive landing page for the Institutes of Technical & Voca
 - **CSS3**: Modern styling with Flexbox and Grid layouts, responsive design
 - **JavaScript (ES6)**: Interactive functionality including pagination system, mobile menu toggle, and scroll detection
 
+## How to Run Locally
+1. Clone or download the repository
+2. Open the `index.html` file in your preferred web browser
+3. Alternatively, you can use a local server:
+   - Python: Run `python -m http.server` in the project directory and visit `http://localhost:8000`
+   - Node.js: Install `live-server` and run `live-server` in the project directory
 
 ## Pagination Implementation
 The website implements a scroll-snap pagination system with the following features:
@@ -21,9 +27,22 @@ The website implements a scroll-snap pagination system with the following featur
 
 The JavaScript implementation:
 - Adds click event listeners to each dot element
+- Uses `window.scrollTo()` with smooth behavior for smooth scrolling
 - Implements a scroll event listener to update the active dot based on the current viewport position
 - Calculates the current section based on the scroll position and section heights
 
+## Key Design Decisions
+
+### Visual Design
+- **Color Scheme**: Professional blue gradient (#1e3c72 to #2a5298) conveying trust and education
+- **Typography**: Clean, readable font stack prioritizing user experience
+- **Whitespace**: Ample spacing to create a modern, uncluttered appearance
+- **Visual Hierarchy**: Clear distinction between sections with different background colors
+
+### User Experience
+- **Navigation**: Fixed header for easy access to navigation from any point on the page
+- **Mobile-First Approach**: Responsive hamburger menu for smaller screens
+- **Section Organization**: Logical flow from introduction to programs to reasons to choose ITVE
 
 ### Technical Implementation
 - **Responsive Grid**: CSS Grid and Flexbox for adaptive layouts across device sizes
