@@ -1,0 +1,7 @@
+<!-- This is a placeholder for the founder image. 
+In a real implementation, you would add an actual image file here. 
+For now, we'll create a simple SVG placeholder -->
+<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="45" fill="#3498db"/>
+  <text x="50" y="60" text-anchor="middle" fill="white" font-size="20" font-family="Arial">MT</text>
+</svg>
